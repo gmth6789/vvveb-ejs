@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+const PORT = 8000;
 
 // Middleware
 app.use(bodyParser.json());
@@ -16,6 +16,12 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.post('/save', (req, res) => {
+  const { htmlContent } = req.body;
+  // Save htmlContent to a file or database
+  res.json({ message: 'Page saved successfully!' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
